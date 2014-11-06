@@ -16,7 +16,7 @@
 		        echo
 					 "<div class='pair'>".
 					 	"<div class='key'>$key</div>" . 
-					 	"<textarea data-table='$table' data-key='$key' data-value='$value' class='value'>$value</textarea>".
+					 	"<textarea data-id='" . $row['id'] . "' data-table='$table' data-key='$key' data-value='$value' class='value'>$value</textarea>".
 					 "</div>";
 		     } 
 			echo "</div>";

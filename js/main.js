@@ -15,9 +15,22 @@ $(function(){
 		});
 	}
 	
+	//updating some elements.  probably a better way to do this...
 	update();
 	$(window).resize(function(){
 		update();
+	});
+	
+	//call function to submit data when textarea is blurred
+	//TODO: submit changes only if info is changed.
+	//$('.value').blur(function(){
+	$(document).on('blur','.value',function(){
+		id = $(this).data('id');
+		table = $(this).data('table');
+		key = $(this).data('key');
+		//the next variable is set to val, as we are changing this based on the textarea 
+		value = $(this).val();
+		tableWrite(id,table,key,value);
 	});
 	
 	//getting table data based on click
@@ -29,10 +42,26 @@ $(function(){
 			data: {'name': tableId},
 			success: function(data){
 				//$('#edit').html(data);
-				console.log('success');
 				$('#edit').html(data);	
 				update();
 			}
 		}); 
 	});
+	
+	//submitting table data when defocused
+	function tableWrite(id,table,key,value){
+		$.ajax({
+			type: "POST",
+			url: '../php/tableWrite.php', //This is the current doc
+			data:{
+				'id': id,
+				'table': table,
+				'key': key,
+				'value': value
+			},
+			success: function(data){
+				console.log(data);	
+			}
+		});
+	}
 });
