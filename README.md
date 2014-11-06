@@ -2,7 +2,7 @@ input
 =====
 A simple CMS designed to let clients directly edit simplified databases, and developers to code in simple PHP.
 
-**WARNING:**
+**NOTE**
 Input is still in development.  DO NOT use this on a public server.  People will see it, and you will mess up your files!
 
 **What you'll need:**
